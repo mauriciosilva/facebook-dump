@@ -1,2 +1,8 @@
 %h1 Base#index
 %p Find me in app/views/base/index.html.haml
+
+
+= debug session[:access_token]
+
+= link_to 'auth', oauth_redirect_url
+= link_to 'login', @oauth.url_for_oauth_code(:permissions => 'publish_stream')

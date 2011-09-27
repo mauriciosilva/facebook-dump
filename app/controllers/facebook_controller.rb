@@ -1,4 +1,14 @@
 class FacebookController < ApplicationController
+  before_filter :set_oauth
+  
+  def redirect 
+    if params[:code] && (session[:access_token] = CGI::unescape(@oauth.get_access_token(params[:code]))).present?                                             
+      redirect_to(root_path)
+    else
+      flash[:error] = "#{params['error']['type']}: #{params['error']['message']}"                                                                             
+      redirect_to(root_path)
+    end
+  end
 
 protected
   def get_app_token
@@ -56,7 +66,7 @@ protected
   end
 
   def parse_facebook_cookies
-    @facebook_cookies ||= Koala::Facebook::OAuth.new.get_user_info_from_cookie(cookies)
+    @facebook_cookies ||= @auth.new.get_user_info_from_cookie(cookies)
   end
 
 	def unpack_signed_request

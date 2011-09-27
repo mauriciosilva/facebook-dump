@@ -6,5 +6,4 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require 'http://connect.facebook.net/en_US/all.js'
 //= require_tree .

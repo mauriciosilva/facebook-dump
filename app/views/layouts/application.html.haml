@@ -4,9 +4,28 @@
     %title Sandbox
     <!--[if IE]> <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script> <![endif]-->
     = csrf_meta_tag
+    = stylesheet_link_tag :application
     = yield :styles
   %body
     %input#fb_app_id{:type => 'hidden', :value => AppConfig.app_id.to_s}
     #fb-root
+    :javascript
+      window.fbAsyncInit = function() {
+       FB.init({
+        appId  : "#{AppConfig.app_id}",
+        status : true, // check login status
+        cookie : true, // enable cookies to allow the server to access the session
+        xfbml  : true, // parse XFBML
+        oauth  : true // enable OAuth 2.0
+      });
+      };
+      (function(d){
+         var js, id = 'facebook-jssdk'; if (d.getElementById(id)) {return;}
+         js = d.createElement('script'); js.id = id; js.async = true;
+         js.src = "//connect.facebook.net/en_US/all.js";
+         d.getElementsByTagName('head')[0].appendChild(js);
+       }(document));
+
     = yield
+    = javascript_include_tag :application
     = yield :scripts
