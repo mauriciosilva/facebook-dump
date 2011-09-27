@@ -1,5 +1,5 @@
 development:
   app_id: 265118333512664
   secret_key: 4a2284bdf8ea558fd4f9f309e8892421
-  app_domain: 'mauriciosilva:8869'
+  app_domain: 'mauriciosilva.org:8869'
   callback_url: 'http://mauriciosilva.org:8869/oauth_redirect' 

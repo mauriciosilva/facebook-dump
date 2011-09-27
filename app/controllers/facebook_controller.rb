@@ -2,7 +2,8 @@ class FacebookController < ApplicationController
   before_filter :set_oauth
   
   def redirect 
-    if params[:code] && (session[:access_token] = CGI::unescape(@oauth.get_access_token(params[:code]))).present?                                             
+    if params[:code] && 
+      (session[:access_token] = CGI::unescape(@oauth.get_access_token(params[:code]))).present?                                             
       redirect_to(root_path)
     else
       flash[:error] = "#{params['error']['type']}: #{params['error']['message']}"                                                                             
@@ -38,7 +39,7 @@ protected
       return user
     else
       flash[:error] = "Error creating user!"
-      redirect_to(home_path)
+      redirect_to(root_path)
     end
   end
 
@@ -49,7 +50,7 @@ protected
       return @current_user
     else
       flash[:error] = "Error creating user!"
-      redirect_to(home_path)
+      redirect_to(root_path)
     end
   end
 
