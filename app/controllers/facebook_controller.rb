@@ -71,7 +71,7 @@ protected
   end
 
 	def unpack_signed_request
-		@signed_request = oauth.parse_signed_request(params['signed_request']) unless params['signed_request'].nil?
+		@signed_request = @oauth.parse_signed_request(params['signed_request']) unless params['signed_request'].nil?
 	end
 
 
