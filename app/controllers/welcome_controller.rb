@@ -3,7 +3,6 @@ class WelcomeController < FacebookController
   def index
     @user = User.find_or_initialize_by(@signed_request) unless @signed_request.nil? 
     @user.save
-    @user
   end
 
 end

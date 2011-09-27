@@ -20,9 +20,6 @@ protected
   end
 
   def current_user
-    # if we logged in using js, get user from cookies, otherwise, get it from session
-    # this should fix the issue with user's projects not getting populated on root page
-    # if user logs in using redirect
     if @facebook_cookies
       @current_user ||= user_from_cookies
     elsif  session[:access_token]
@@ -32,9 +29,7 @@ protected
 
   def user_from_cookies
     return unless @facebook_cookies
-
     user = User.find_or_initialize_by(:uid => @facebook_cookies['uid'])
-
     if user.update_attributes(:access_token => @facebook_cookies['access_token'])
       return user
     else
@@ -44,7 +39,6 @@ protected
   end
 
   def user_from_session
-    # have to make graph since we're getting info from session
     @current_user = User.find_or_initialize_by(:uid => @graph.get_object('me')['id'])
     if @current_user.update_attributes(:access_token => session[:access_token])
       return @current_user
