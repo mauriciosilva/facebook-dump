@@ -1,5 +1,7 @@
-class BaseController < ApplicationController
+class BaseController < FacebookController
   def index
+
+
   end
 
 end
