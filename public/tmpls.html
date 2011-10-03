@@ -1,0 +1,82 @@
+<script id='fbstatustemplate' type='x-jquery-tmpl'>
+  <div class='fb-statuses'>
+    <ul>
+      <li>
+        <div class='status-item'>
+          <div class='status-photo'>
+            {{if picture}}
+             <div><img src='${picture}'/></div>
+            {{/if}}
+          </div>
+          <div class='status-body'>
+            <div>${message}</div>
+            {{if likes}}
+              <span><b>likes </b>${likes.count}</span>
+            {{/if}}
+            {{if from}}
+            <span><b>from </b> ${from.name}</span>
+            {{/if}}
+            <span><b>created </b> ${created_time}</span>
+            {{if comments}}
+              {{if comments.count}}
+            <span><b>comments </b> ${comments.count}</span>
+              {{/if}}
+            {{/if}}
+          </div>
+        </div>
+			</li>
+    </ul>
+  </div>
+</script>
+<!-- used on profile box -->
+<script id='userTemplate' type='x-jquery-tmpl'>
+  <div class="on_badge">
+    <div class="badge-image"><img src='${pic_square}' alt='' /></div>
+    <div class="badge-name">${name}</div>
+  </div>
+</script>
+
+<script id='FBProjectTemplate' type='x-jquery-tmpl'>
+    {{each data}}
+    <div class='fb-projects-details'>
+      <h1 class='project-name'>${name}</h1>
+    </div>
+    {{/each}}
+</script>
+
+<script id='FBProjectTemplate1' type='x-jquery-tmpl'>
+  <div id='${id}' class='fb-projects-details elements ${category}'>
+    <div class='project-logo'>
+      {{if picture}}
+      <div class='project-name' ><img src='${picture}'/></div>
+      {{else}}
+      <div class='project-name'><img src="http://static.ak.fbcdn.net/rsrc.php/v1/y0/r/XsEg9L6Ie5_.jpg"/></div>
+      {{/if}}
+      <div class='project-details'>
+        <h1 class='project-name'>${name}</h1>
+        <div class='project-name'>${likes} likes</div>
+        <div class='project-name'><br/>type: ${category}</div>
+      </div>
+    </div>
+    <div class='project-status-container'>mid</div>
+    <div class='project-pending-posts'>right</div>
+  </div>
+</script>
+
+<script id='FBProjectsTemplate' type='x-jquery-tmpl'>
+  <ul class='fb-projects-list'>
+  {{each data}}
+    <li class='fb-project'>
+      <div class='project-name' rel='fb_project'>
+        <a rel='detail-link' data-rel='${id}' href='https://graph.facebook.com/${id}'>
+          {{if category == "Application"}}
+            <span class='is_${category}'>${name} (${category})</span>
+          {{else}}
+            <span class='is_fanpage'>${name} (Fan Page)</span>
+          {{/if}}
+        </a>
+      </div>
+    </li>
+  {{/each}}
+  </ul>
+</script>

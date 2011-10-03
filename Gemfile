@@ -25,6 +25,7 @@ end
 
 gem 'jquery-rails'
 
+
 group :test do
   # Pretty printed test output
   gem 'turn', :require => false

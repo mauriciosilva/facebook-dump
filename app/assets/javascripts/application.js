@@ -7,4 +7,5 @@
 //= require jquery
 //= require jquery_ujs
 //= require pubsub.js
+//= require fb.js
 //= require_tree .

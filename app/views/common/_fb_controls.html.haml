@@ -1,11 +1,4 @@
-/
-  %p
-    %fb:login-button{:perms => 'publish_stream'}
-    Login 
-
-%p
-  %fb:registration{:fields => "[{'name':'name'}, {'name':'email'}]", 
-                    :redirect_uri => "http://#{AppConfig.app_domain}/welcome"}
+//fb:login-button{:scope => 'publish_stream'}
   
 
 
